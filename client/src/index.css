@@ -1,0 +1,36 @@
+@import url(https://fonts.googleapis.com/css?family=Indie+Flower);
+
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  background: lightgoldenrodyellow;
+  display: flex;
+  justify-content: center;
+}
+
+::-webkit-scrollbar {
+  min-width: 5px;
+  width: 5px;
+  max-width: 5px;
+  min-height: 0px;
+  height: 0px;
+  max-height: 0px;
+  background-color: #fff;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #333232;
+  border: none;
+  border-radius: 0px;
+  backface-visibility: hidden;
+}
+::-webkit-scrollbar-thumb:hover, ::-webkit-scrollbar-thumb:active {
+  background: #333232;
+}
+::-webkit-scrollbar-button {
+  display: none;
+}
+::-webkit-resizer, ::-webkit-scrollbar-corner {
+  background: none;
+}
