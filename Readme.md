@@ -66,8 +66,14 @@ To run the Task Manager API locally, follow these steps:
 
 1. Make sure you have Docker installed on your machine.
 2. Clone the project repository.
-3. Run the docker-compose.yaml which will directly build and start the containers & the application !.
+3. Build the spring-boot app to generate the .jar 
+
+   ```shell
+   mvn install
+   ```
+4. Run the docker-compose.yaml which will directly build & start the containers
 
    ```shell
    docker-compose -f ./docker-compose.yaml up
    ```
+5. Go to http://localhost:5173/ to view !
