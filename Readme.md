@@ -76,4 +76,4 @@ To run the Task Manager API locally, follow these steps:
    ```shell
    docker-compose -f ./docker-compose.yaml up
    ```
-5. Go to http://localhost:5173/ to view !
+5. Go to ```http://localhost:5173/``` to view !
