@@ -1,6 +1,11 @@
-# Task Manager API
+# Task Manager
 
-The Task Manager API is a RESTful web service built with Spring Boot. It provides endpoints to manage tasks and categories in a task management system.
+|  |  |
+| --- | --- |
+| [![Image 1](https://git-bitbucket.aws.fico.com:8443/users/ujjwallnu/repos/test/raw/ss/1.png)](https://git-bitbucket.aws.fico.com:8443/users/ujjwallnu/repos/test/raw/ss/1.png) | [![Image 2](https://git-bitbucket.aws.fico.com:8443/users/ujjwallnu/repos/test/raw/ss/2.png)](https://git-bitbucket.aws.fico.com:8443/users/ujjwallnu/repos/test/raw/ss/2.png) |
+| [![Image 3](https://git-bitbucket.aws.fico.com:8443/users/ujjwallnu/repos/test/raw/ss/3.png)](https://git-bitbucket.aws.fico.com:8443/users/ujjwallnu/repos/test/raw/ss/3.png) | [![Image 4](https://git-bitbucket.aws.fico.com:8443/users/ujjwallnu/repos/test/raw/ss/4.png)](https://git-bitbucket.aws.fico.com:8443/users/ujjwallnu/repos/test/raw/ss/4.png) |
+| [![Image 5](https://git-bitbucket.aws.fico.com:8443/users/ujjwallnu/repos/test/raw/ss/5.png)](https://git-bitbucket.aws.fico.com:8443/users/ujjwallnu/repos/test/raw/ss/5.png) | [![Image 6](https://git-bitbucket.aws.fico.com:8443/users/ujjwallnu/repos/test/raw/ss/6.png)](https://git-bitbucket.aws.fico.com:8443/users/ujjwallnu/repos/test/raw/ss/6.png) |
+
 
 ## API Endpoints
 
@@ -41,6 +46,8 @@ To run the Task Manager API locally, follow these steps:
 
 1. Make sure you have Docker installed on your machine.
 2. Clone the project repository.
-3. Build the Docker image for the backend application using the provided Dockerfile.
+3. Run the docker-compose.yaml which will directly build and start the containers & the application !.
+
    ```shell
-   docker build -t backend .
+   docker-compose -f ./docker-compose.yaml up
+   ```
