@@ -8,42 +8,46 @@ const Creator = (p) => {
         if (p.newTask == undefined || p.newTask.trim() == "") return;
         let data = {
             title: p.newTask.trim(),
-            catID: p.currCat,
+            category: {
+                id: p.currCat
+            },
+            time: new Date().toLocaleTimeString()
         };
-        if (p.body != undefined && p.body.trim() != "") data["body"] = p.body.trim();
+        if (p.body != undefined && p.body.trim() != "") data["description"] = p.body.trim();
 
         if (p.option == "Save") {
-            await axios.post("/api/tasks", data).then(r => {
+            await axios.post("/todo", data).then(r => {
                 Notiflix.Notify.success('Task Added !!!');
             });
         } else if (p.option == "Edit") {
-            await axios.put(`/api/tasks/${p.edit}`, data).then((r) => {
+            await axios.put(`/todo/${p.edit}`, data).then((r) => {
                 Notiflix.Notify.success("Task Edited & Saved !!!");
             });
             p.setOption("Save");
         }
         p.setBody(""); p.setNewTask("");
-        await axios.get(`/api/tasks/c/${p.currCat}`).then((r) =>
-            p.setTasks(...[r.data.response.map(e => e)])
-        );
+        await updateCats();
     }
 
     async function clearAll() {
-        await axios.delete(`/api/tasks/0/${p.currCat}`).then((r) => {
+        await axios.delete(`/todo/0/${p.currCat}`).then((r) => {
             Notiflix.Notify.success('All tasks Deleted !!!');
+            updateCats();
         });
     }
 
     async function clearAllCompleted() {
-        await axios.delete(`/api/tasks/c/${p.currCat}/true`).then((r) => {
+        await axios.delete(`/todo/0/${p.currCat}/true`).then((r) => {
             Notiflix.Notify.success('All Completed Tasks Deleted !!!');
+            updateCats();
         });
     }
 
-    const map = {
-        "save": <p>apple</p>,
-        "temp": <h1>apple</h1>
-    };
+    async function updateCats(){
+        await axios.get(`/todo/c/${p.currCat}`).then((r)=>{
+            p.setTasks(...[r.data.map(e=>e)])
+        });
+    }
 
     return (
 

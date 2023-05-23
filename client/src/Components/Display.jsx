@@ -22,36 +22,35 @@ const Display = (p) => {
                 buttonsMaxLength: 12,
                 okButtonBackground: 'red',
             });
-            await axios.get(`/api/tasks/c/all/c`).then(async(r)=>
-            { r.data.response.map(async (e)=>{
-                    await deleteCategory(e.CatID);
-                });
-                }
-            );
+            await axios.delete("/categories/deleteUnused").then((r)=>console.log(r));
             await updateCategories();
         })();
     },[]);
 
     async function updateCats(){
-        await axios.get(`/api/tasks/c/${p.currCat}`).then((r)=>
-            p.setTasks(...[r.data.response.map(e=>e)])
-        );
+        await axios.get(`/todo/c/${p.currCat}`).then((r)=>{
+            p.setTasks(...[r.data.map(e=>e)])
+            if(p.tasks.length==1){
+                deleteCategory(p.tasks[0].category.id);
+            }
+        });
     }
 
     async function updateCategories(){
-        await axios.get("/api/tasks/c/all").then((r)=>{
-            setCategories(r.data.response);
-            p.setCurrCat(r.data.response[0].CatID);
+        await axios.get("/categories").then((r)=>{
+            setCategories(r.data);
+            p.setCurrCat(r.data[0].id);
         });
         setFlag(false);
     }
 
     useEffect(()=>{
         updateCats();
-    },[p.currCat,p.tasks]);
+    },[p.currCat]);
 
     async function createNewCat(){
-        await axios.post(`/api/tasks/c`,{categoryName:newCat.trim()}).then(r=>{
+        if (newCat == undefined || newCat.trim() == "") return;
+        await axios.post(`/categories`,{name:newCat.trim()}).then(r=>{
             Notiflix.Notify.success('Category Added !!!');
             setNewCat("");
         });;
@@ -59,7 +58,7 @@ const Display = (p) => {
     }
     
     async function deleteCategory(i){
-        await axios.delete(`/api/tasks/c/${i}`).then((r)=>{
+        await axios.delete(`/categories/${i}`).then((r)=>{
             Notiflix.Notify.success("Category Deleted !!!");
         });
         await updateCategories();
@@ -67,14 +66,18 @@ const Display = (p) => {
 
     async function deleteTask(i){
 
-        await axios.delete(`/api/tasks/${i}`).then((r)=>{
+        await axios.delete(`/todo/${i}`).then((r)=>{
             Notiflix.Notify.success("Task Deleted !!!");
         });
 
+        await updateCats();
+        
         // Deleting category if no task of current category
-        if(p.tasks.length<2 && p.tasks[0].CatID!=1){
-            await deleteCategory(p.tasks[0].CatID);
-        }
+        
+        // if(p.tasks.length==1){
+        //     console.log(p.tasks)
+        //     await deleteCategory(p.tasks.category.id);
+        // }
 
     }
 
@@ -86,12 +89,9 @@ const Display = (p) => {
     }
 
     async function updateStatus(i,t,b,st){
-        await axios.put(`/api/tasks/${i}`,{
-            title:t,
-            body:b,
-            status:st==0?1:0,
-        }).then((r)=>{
+        await axios.put(`/todo/${i}/${!st}`,{}).then((r)=>{
             Notiflix.Notify.success("Status Updated !!!");
+            updateCats();
         });
     }
     var cnt = 1;
@@ -104,40 +104,45 @@ const Display = (p) => {
                 categories.map((e,i)=>{
                     return (
                     <>
-                        <input id={`tab-${i}`} key={i} type="radio" className="tab tab-selector" name="tab" value={e.CatID} onChange={(e)=>{p.setCurrCat(e.target.value);setFlag(false)}} checked={p.currCat==e.CatID}/>
-                        <label htmlFor={`tab-${i}`} key={i+10} className="tab tab-primary">{e.CategoryName}</label>
+                        <input id={`tab-${i}`} key={i} type="radio" className="tab tab-selector" name="tab" value={e.id} onChange={(e)=>{p.setCurrCat(e.target.value);setFlag(false)}} checked={p.currCat==e.id}/>
+                        <label htmlFor={`tab-${i}`} key={i+10} className="tab tab-primary">{e.name}</label>
                     </>
                     );
                 })
             }
             <button id="createNew" className={flag&&"focus"} onClick={()=>{setFlag(true);p.setCurrCat(-1)}}>+</button>
             </div>
-            {flag && <><input type="text" value={newCat} onChange={(e)=>setNewCat(e.target.value)} placeholder='Create a new Category' required/><button className='btn' onClick={createNewCat}>Add</button></>}
+            {flag && 
+                <>
+                    <input type="text" value={newCat} onChange={(e)=>setNewCat(e.target.value)} placeholder='Create a new Category' required/>
+                    <button className='btn' onClick={createNewCat}>Add</button>
+
+                </>}
             <br/>
             {
                 p.tasks.map((e,i)=>{
                     return (
                     <>
                         <span key={i} className="dragObj">
-                            <button onClick={()=>updateStatus(e.ID,e.Title,e.Body,e.Status)}>
-                                    {`${i+1}. ${e.Title}`}
+                            <button onClick={()=>updateStatus(e.id,e.title,e.description,e.status)}>
+                                    {`${i+1}. ${e.title}`}
                             </button>
                             {
-                                e.Status==0?
+                                !e.status?
                                 <>
                                     <i className="fa-solid fa-pen-to-square text-green mark yellow" 
-                                        onClick={()=>editTask(e.ID,e.Title,e.Body)}
+                                        onClick={()=>editTask(e.id,e.title,e.description)}
                                     ></i>
                                     <i
                                         className="fa-solid fa-trash mark red"
-                                        onClick={() => deleteTask(e.ID)}
+                                        onClick={() => deleteTask(e.id)}
                                     ></i>
                                     {
-                                        e.Body && <i className="fa-solid fa-eye mark" onClick={()=>{
+                                        e.description && <i className="fa-solid fa-eye mark" onClick={()=>{
                                                 
                                             Notiflix.Confirm.show(
-                                            `Task: ${e.Title}`,
-                                            `${e.Body}`,
+                                            `Task: ${e.title}`,
+                                            `${e.description}`,
                                             'Close'
                                           )}}></i>
                                     }

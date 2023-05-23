@@ -1,5 +1,5 @@
 import {useState,useEffect} from 'react';
-import axios from 'axios';
+import axios from './Components/Api';
 import reactLogo from './assets/react.svg'
 import Creator from './Components/Creator'
 import Display from './Components/Display'
@@ -13,6 +13,10 @@ function App() {
   const [body,setBody] = useState();
   const [option,setOption] = useState("Save");
   const [edit,setEdit] = useState(0); 
+  const [quote,setQuote] = useState({
+    content:"",
+    author:""
+  });
 
   const CreatorProps = {
     currCat:currCat,
@@ -37,11 +41,16 @@ function App() {
     setOption:setOption,
     setEdit:setEdit,
   };
+
+  useEffect(()=>{
+    // axios.get("/random").then((r)=>setQuote(r.data[0]))
+  },[]); 
   
   return (
     <div className="paper">
         <p className='date'>○ {new Date().toLocaleDateString()}</p>
-        <p className="date logout">Log Out</p>
+        {/* <p className="date quote">{quote.content}</p> */}
+        <p className="date quote">Welcome :)</p>
         <p id="heading">Your Personal Task Manager</p>
         <Creator {...CreatorProps}/>
         <Display {...DisplayProps} />

@@ -16,7 +16,7 @@
   z-index:10;
 }
 
-.logout{
+.quote{
   z-index:9 !important;
   top:55px;
   right:61px;
@@ -40,6 +40,7 @@
     margin-top: 20px;
     margin-bottom: 20px;
 }
+
 
 .paper::before {
   content: '';
