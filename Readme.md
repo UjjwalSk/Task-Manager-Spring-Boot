@@ -2,9 +2,9 @@
 
 |  |  |
 | --- | --- |
-| [![Image 1](https://git-bitbucket.aws.fico.com:8443/users/ujjwallnu/repos/test/raw/ss/1.png)](https://git-bitbucket.aws.fico.com:8443/users/ujjwallnu/repos/test/raw/ss/1.png) | [![Image 2](https://git-bitbucket.aws.fico.com:8443/users/ujjwallnu/repos/test/raw/ss/2.png)](https://git-bitbucket.aws.fico.com:8443/users/ujjwallnu/repos/test/raw/ss/2.png) |
-| [![Image 3](https://git-bitbucket.aws.fico.com:8443/users/ujjwallnu/repos/test/raw/ss/3.png)](https://git-bitbucket.aws.fico.com:8443/users/ujjwallnu/repos/test/raw/ss/3.png) | [![Image 4](https://git-bitbucket.aws.fico.com:8443/users/ujjwallnu/repos/test/raw/ss/4.png)](https://git-bitbucket.aws.fico.com:8443/users/ujjwallnu/repos/test/raw/ss/4.png) |
-| [![Image 5](https://git-bitbucket.aws.fico.com:8443/users/ujjwallnu/repos/test/raw/ss/5.png)](https://git-bitbucket.aws.fico.com:8443/users/ujjwallnu/repos/test/raw/ss/5.png) | [![Image 6](https://git-bitbucket.aws.fico.com:8443/users/ujjwallnu/repos/test/raw/ss/6.png)](https://git-bitbucket.aws.fico.com:8443/users/ujjwallnu/repos/test/raw/ss/6.png) |
+| [![Image 1](https://github.com/UjjwalSk/Task-Manager-Spring-Boot/blob/main/ss/1.png)](https://github.com/UjjwalSk/Task-Manager-Spring-Boot/blob/main/ss/1.png) | [![Image 2](https://github.com/UjjwalSk/Task-Manager-Spring-Boot/blob/main/ss/2.png)](https://github.com/UjjwalSk/Task-Manager-Spring-Boot/blob/main/ss/2.png) |
+| [![Image 3](https://github.com/UjjwalSk/Task-Manager-Spring-Boot/blob/main/ss/3.png)](https://github.com/UjjwalSk/Task-Manager-Spring-Boot/blob/main/ss/3.png) | [![Image 4](https://github.com/UjjwalSk/Task-Manager-Spring-Boot/blob/main/ss/4.png)](https://github.com/UjjwalSk/Task-Manager-Spring-Boot/blob/main/ss/4.png) |
+| [![Image 5](https://github.com/UjjwalSk/Task-Manager-Spring-Boot/blob/main/ss/5.png)](https://github.com/UjjwalSk/Task-Manager-Spring-Boot/blob/main/ss/5.png) | [![Image 6](https://github.com/UjjwalSk/Task-Manager-Spring-Boot/blob/main/ss/6.png)](https://github.com/UjjwalSk/Task-Manager-Spring-Boot/blob/main/ss/6.png) |
 
 
 ## Tech Stack
