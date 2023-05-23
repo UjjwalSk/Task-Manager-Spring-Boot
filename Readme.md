@@ -7,6 +7,26 @@
 | [![Image 5](https://git-bitbucket.aws.fico.com:8443/users/ujjwallnu/repos/test/raw/ss/5.png)](https://git-bitbucket.aws.fico.com:8443/users/ujjwallnu/repos/test/raw/ss/5.png) | [![Image 6](https://git-bitbucket.aws.fico.com:8443/users/ujjwallnu/repos/test/raw/ss/6.png)](https://git-bitbucket.aws.fico.com:8443/users/ujjwallnu/repos/test/raw/ss/6.png) |
 
 
+## Tech Stack
+
+The Task Manager API is built using the following technologies:
+
+- **Backend:**
+  - Java: Programming language for the backend logic
+  - Spring Boot: Framework for creating Java applications
+  - Spring Data JPA: Simplifies database access and provides JPA support
+  - PostgreSQL: Relational database management system
+  - RestTemplate: HTTP client for making API requests
+
+- **Frontend:**
+  - React: JavaScript library for building user interfaces
+  - Vite: Build tooling for modern web applications
+
+- **Containerization:**
+  - Docker: Containerization platform for running applications in isolated environments
+  - Docker Compose: Tool for defining and running multi-container Docker applications
+
+
 ## API Endpoints
 
 ### Tasks
